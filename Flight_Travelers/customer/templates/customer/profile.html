@@ -1,0 +1,12 @@
+{% extends "customer/layout.html" %}
+{% block body %}
+    <h1>Profile for {{ user.username }}</h1>
+    <ul>
+        <li>First name:{{profile.first_name}}</li>
+        <li>Middle name:{{profile.middle_name}}</li>
+        <li>Last name:{{profile.last_name}}</li>
+        <li>Id Number:{{profile.customer_id}}</li>
+        <li>Passport No:{{profile.passport_number}}</li>
+        <li>photo : <img src="{{ profile.photo.url }}" alt="Profile Photo" width="100"></li>
+    </ul>
+{% endblock %}

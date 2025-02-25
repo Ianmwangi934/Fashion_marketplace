@@ -1,0 +1,6 @@
+{% extends "customer/layout.html" %}
+{% block body %}
+    <h1>{{airline.name}}</h1>
+    <img src="{{ airline.logo.url }}" alt="{{ airline.name }} logo" width="300">
+    <a href="{% url 'airlines' %}">Back to Airlines</a>
+{% endblock %}

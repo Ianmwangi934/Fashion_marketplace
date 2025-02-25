@@ -1,0 +1,13 @@
+{% extends "customer/layout.html" %}
+{% block body %}
+    <h1>Available Airlines</h1>
+    {% for airline in airlines %}
+        <ul>
+            <li>
+                <a href="{% url 'airline_detail' airline.id %}">{{airline}}</a>
+            </li>
+            <li><img src="{{airline.logo.url}}" alt="logo" width="300"></li>
+        </ul>
+        
+    {% endfor %}
+{% endblock %}
