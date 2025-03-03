@@ -4,7 +4,7 @@
     {% for airline in airlines %}
         <ul>
             <li>
-                <a href="{% url 'airline_detail' airline.id %}">{{airline}}</a>
+                <a href="{% url 'flight_data_view' airline.iata_code %}">{{airline}}</a>
             </li>
             <li><img src="{{airline.logo.url}}" alt="logo" width="300"></li>
         </ul>

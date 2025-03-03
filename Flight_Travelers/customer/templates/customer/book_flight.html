@@ -1,0 +1,15 @@
+{% extends "customer/layout.html" %}
+{% block body %}
+    <h1>Confirm your Booking</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Flight Number: <strong>{{flight_number}}</strong></p>
+        <p>Departure Airport: <strong>{{departure_airport}}</strong></p>
+        <p>Arrival Airport: <strong>{{arrival_airport}}</strong></p>
+        <input type="hidden" name="flight_number" value="{{flight_number}}">
+        <input type="hidden" name="departure_airport" value="{{departure_airport}}">
+        <input type="hidden" name="arrival_airport" value="{{arrival_airport}}">
+        <input type="hidden" name="airline_iata" value="{{airline_iata}}">
+        <button type="submit">Confirm Booking</button>
+    </form>
+{% endblock %}

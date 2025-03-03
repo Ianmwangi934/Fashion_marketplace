@@ -20,4 +20,15 @@ class Airlines(models.Model):
 
     def __str__(self):
         return self.name 
+class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    airline = models.ForeignKey('Airlines', on_delete=models.CASCADE)
+    flight_number = models.CharField(max_length=20)
+    departure_airport = models.CharField(max_length=100)
+    arrival_airport = models.CharField(max_length=100)
+    departure_time = models.DateTimeField(null=True,blank=True)
+    booking_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username}  - {self.flight_number}" 
     

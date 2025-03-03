@@ -5,13 +5,15 @@
         {% if flight_data.error %}
             <p>Error loading flight data: {{flight_data.error}}</p>
         {% elif flight_data %}
-            {% elif flight_data | length > 0 %}
+            {% if flight_data|length > 0 %}
                 <ul>
                     {% for flight in flight_data %}
                         <li>
                             Flight {{flight.flight.iata}}:
-                            {{flight.departure.iata}} -> {{flight.arival.iata}}
+                            {{flight.departure.iata}} -> {{flight.arrival.iata}}<br>
                             (Status: {{flight.status}})
+                            <!-- The link sends flight details to the booking view-->
+                            <a href="{% url 'book_flight_view' %}?flight_number={{ flight.flight.iata }}&departure_airport={{airport_iata}}&arrival_airport={{flight.arrival.iata}}&airline_iata={{airline.iata_code}}">Book Flight</a>
                         </li>
                     {% endfor %}
                 </ul>

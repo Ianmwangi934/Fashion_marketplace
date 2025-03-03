@@ -5,7 +5,9 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Airlines
+from .models import Profile,Airlines,Booking
+from django.contrib.auth.decorators import login_required
+import requests
 class LoginForm(forms.Form):
     username = forms.CharField(label="username", widget=forms.TextInput(attrs={'placeholder': 'Enter your username'}))
     email = forms.CharField(label="email", widget=forms.TextInput(attrs={'placeholder':'Enter your email'}))
@@ -23,6 +25,42 @@ class ProfileForm(forms.Form):
     photo = forms.ImageField(label="photo", required=False)
 
 # Create your views here.
+@login_required()
+def book_flight_view(request):
+    if request.method == "POST":
+        #Retrieving flight data from the form submission
+        flight_number = request.POST.get('flight_number')
+        departure_airport = request.POST.get('departure_airport')
+        arrival_airport = request.POST.get('arrival_airport')
+        airline_iata = request.POST.get('airline_iata')
+
+        #Looking up the airline from our database
+        airline = get_object_or_404(Airlines, iata_code=airline_iata)
+
+        #creating the booking record
+        booking = Booking.objects.create(
+            user = request.user,
+            airline = airline,
+            flight_number=flight_number,
+            departure_airport=departure_airport,
+            arrival_airport=arrival_airport
+        )
+        return render(request, "customer/booking_confirmation.html",{
+            "booking":booking
+        })
+    else:
+        #For get request, we assume the flight details are passed as  query parameters
+        flight_number = request.GET.get('flight_number')
+        departure_airport = request.GET.get('departure_airport')
+        arrival_airport = request.GET.get('arrival_airport')
+        airline_iata = request.GET.get('airline_iata')
+        context = {
+            "flight_number":flight_number,
+            "departure_airport":departure_airport,
+            "arrival_airport":arrival_airport,
+            "airline_iata":airline_iata,
+        }
+        return render(request, "customer/book_flight.html", context)
 def airlines(request):
     airlines = Airlines.objects.all()
     print(airlines)
@@ -34,19 +72,19 @@ def airline_detail(request,airline_id):
     return render(request, "customer/airline_detail.html",{
         "airline":airline
     })
-def flight_data_view(request, airline_id):
+def flight_data_view(request, iata_code):
     #Retrieving the airline object by id
-    airline = get_object_or_404(Airlines, id =airline_id)
+    airline = get_object_or_404(Airlines, iata_code=iata_code)
     #Building the API endpoint using the airline's IATA code.
     endpoint = (
-        f"https://aviation-edge.com/v2/public/flights?"
-        f"key=294b13ef1053bb49e6294514be8567e4&airlineIata={iata_code}"
+        f"http://api.aviationstack.com/v1/flights?"
+        f"access_key=294b13ef1053bb49e6294514be8567e4&airline_iata={iata_code}"
     )
     try:
-        response = request.get(endpoint)
+        response = requests.get(endpoint)
         response.raise_for_status()
-        flight_data = response.json()
-    except request.RequestException as e:
+        flight_data = response.json().get("data",[])
+    except requests.RequestException as e:
         flight_data = {"error": str(e)}
     return render(request, "customer/flight_data.html",{
         "airline":airline,
@@ -107,7 +145,6 @@ def home(request):
         return HttpResponseRedirect(reverse("login_view"))
     return render(request, "customer/home.html")
 def login_view(request):
-    
     form = LoginForm()
     if request.method == "POST":
         username = request.POST["username"]
@@ -117,7 +154,7 @@ def login_view(request):
 
         if user is not None:
             login(request,user)
-            return HttpResponseRedirect(reverse("flight_data_view",args=[airline_id]))
+            return HttpResponseRedirect(reverse(airlines))
         else:
             return HttpResponseRedirect(reverse("signup"))
     return render(request, "customer/login.html",{

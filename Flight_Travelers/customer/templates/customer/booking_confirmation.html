@@ -1,0 +1,8 @@
+{% extends "customer/layout.html" %}
+{% block body %}
+    <h1>Booking Confirmed!</h1>
+    <p>Your booking for flight{{booking.flight_number}} has been confirmed.</p>
+    <p>Departure:{{booking.departure_airport}}</p>
+    <p>Booked on:{{booking.booking_date}}</p>
+    <a href="{% url 'airlines' %}">Back to Airlines</a>
+{% endblock %}
