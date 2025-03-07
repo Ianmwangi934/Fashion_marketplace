@@ -10,6 +10,7 @@ urlpatterns = [
     path("airlines", views.airlines, name="airlines"),
     path("airlines/<int:airline_id>/",views.airline_detail, name="airline_detail"),
     path("airlines/<str:iata_code>/flights/",views.flight_data_view,name="flight_data_view"),
-    path("book_flight", views.book_flight_view, name="book_flight_view")
+    path("book_flight", views.book_flight_view, name="book_flight_view"),
+    path("airlines/<str:iata_code>/search", views.airlines_search_view,name="airline_search_view")
 
 ]

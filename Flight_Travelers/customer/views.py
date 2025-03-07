@@ -25,6 +25,34 @@ class ProfileForm(forms.Form):
     photo = forms.ImageField(label="photo", required=False)
 
 # Create your views here.
+def airlines_search_view(request, iata_code):
+    #retrieving airline from the data base
+    airline = get_object_or_404(Airlines, iata_code=iata_code)
+    #Getting the search parameters
+    dep_iata = request.GET.get('dep_iata')
+    arr_iata = request.GET.get('arr_iata')
+    flight_data = None
+
+    # if both departure and arrival are provided, fetch the flight data
+    if dep_iata and arr_iata:
+        endpoint = (
+            f"http://apiaviationstack.com/v1/flights?"
+            f"access_key=294b13ef1053bb49e6294514be8567e4&airline_iata={iata_code}&dep_iata={dep_iata}&arr_iata={arr_iata}"
+        )
+        try:
+            response = requests.get(endpoint)
+            response.raise_for_status()
+            flight_data = response.json().get("data",[])
+        except requests.RequestException as e:
+            flight_data = {"error":str(e)}
+    context = {
+        "airline":airline,
+        "flight_data":flight_data,
+        "dep_iata":dep_iata,
+        "arr_iata":arr_iata,
+    }
+    return render(request, "customer/airline_search.html", context)
+
 @login_required()
 def book_flight_view(request):
     if request.method == "POST":
