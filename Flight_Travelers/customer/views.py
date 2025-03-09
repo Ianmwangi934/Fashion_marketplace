@@ -97,9 +97,21 @@ def airlines(request):
     })
 def airline_detail(request,airline_id):
     airline = get_object_or_404(Airlines, id=airline_id)
-    return render(request, "customer/airline_detail.html",{
-        "airline":airline
-    })
+    # A dictonary mapping IATA codes to lists of images filenames
+    images_map = {
+        "AA": ["AA1.jpg", "AA2.jpg", "AA3.png", "AA5.jpg", "AA7.jpg"],
+        "DL": ["DE2.jpg", "DE4.jpg", "DE8.jpg", "DE7.jpg", "DE9.jpg"],
+        "BA": ["DL2.jpg", "DL1.jpg", "DL3.jpeg", "DL6.jpg", "DL5.jpg"],
+        "AM": ["DL.png", "AM3.jpeg", "AM2.jpg", "DL2.png", "DL4.jpg"]
+
+    }
+    airline_images = images_map.get(airline.iata_code, [])
+
+    context = {
+        "airline":airline,
+        "airline_images":airline_images,
+    }
+    return render(request, "customer/airline_detail.html", context)
 def flight_data_view(request, iata_code):
     #Retrieving the airline object by id
     airline = get_object_or_404(Airlines, iata_code=iata_code)

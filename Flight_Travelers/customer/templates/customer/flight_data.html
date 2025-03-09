@@ -1,29 +1,98 @@
 {% extends "customer/layout.html" %}
 {% block body %}
-    <h1>Flight Data for {{ airline.name }}</h1>
-    <div id="flights">Loading flight data.....
-        {% if flight_data.error %}
-            <p>Error loading flight data: {{flight_data.error}}</p>
-        {% elif flight_data %}
-            {% if flight_data|length > 0 %}
-                <ul>
-                    {% for flight in flight_data %}
-                        <li>
-                            Flight {{flight.flight.iata}}:
-                            {{flight.departure.iata}} -> {{flight.arrival.iata}}<br>
-                            (Status: {{flight.status}})
-                            <!-- The link sends flight details to the booking view-->
-                            <a href="{% url 'book_flight_view' %}?flight_number={{ flight.flight.iata }}&departure_airport={{airport_iata}}&arrival_airport={{flight.arrival.iata}}&airline_iata={{airline.iata_code}}">Book Flight</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No flight data available</p>
-            {% endif %}
-        {% else %}
-                <p>Loading flight data .....</p>
-        {% endif %}
+  <style>
+    .flight-container {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 900px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .flight-title {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    .flight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .flight-list li {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+    .flight-list li:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .flight-info {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+    .flight-status {
+      font-weight: bold;
+      color: #007bff;
+    }
+    .book-flight {
+      display: inline-block;
+      background-color: #28a745;
+      color: #fff;
+      padding: 8px 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .book-flight:hover {
+      background-color: #218838;
+    }
+    .loading, .error, .no-data {
+      text-align: center;
+      font-size: 1.2em;
+      color: #666;
+      margin-top: 20px;
+    }
+    .title {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+  </style>
 
+  <div class="flight-container">
+    <h1 class="flight-title">Flight Data for {{ airline.name }}</h1>
+    <h1 class="title">Book your Ticket </h1>
+    <div id="flights">
+      {% if flight_data.error %}
+        <p class="error">Error loading flight data: {{ flight_data.error }}</p>
+      {% elif flight_data %}
+        {% if flight_data|length > 0 %}
+          <ul class="flight-list">
+            {% for flight in flight_data %}
+              <li>
+                <div class="flight-info">
+                  Flight <strong>{{ flight.flight.iata }}</strong>: 
+                  {{ flight.departure.iata }} → {{ flight.arrival.iata }}<br>
+                  (Status: <span class="flight-status">{{ flight.status }}</span>)
+                </div>
+                <a href="{% url 'book_flight_view' %}?flight_number={{ flight.flight.iata }}&departure_airport={{ flight.departure.iata }}&arrival_airport={{ flight.arrival.iata }}&airline_iata={{ airline.iata_code }}" class="book-flight">Book Flight</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="no-data">No flight data available</p>
+        {% endif %}
+      {% else %}
+        <p class="loading">Loading flight data .....</p>
+      {% endif %}
     </div>
-    
+  </div>
 {% endblock %}
