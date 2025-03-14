@@ -11,6 +11,10 @@ urlpatterns = [
     path("airlines/<int:airline_id>/",views.airline_detail, name="airline_detail"),
     path("airlines/<str:iata_code>/flights/",views.flight_data_view,name="flight_data_view"),
     path("book_flight", views.book_flight_view, name="book_flight_view"),
-    path("airlines/<str:iata_code>/search", views.airlines_search_view,name="airline_search_view")
+    path("airlines/<str:iata_code>/search", views.airlines_search_view,name="airline_search_view"),
+    path("support/submit/", views.submit_ticket, name="submit_ticket"),
+    path("support/ticket",views.ticket_list, name="ticket_list"),
+    path("support/dashboard/",views.support_dashboard, name="support_dashboard"),
+    path("support/ticket/<int:ticket_id>/",views.ticket_detail, name="ticket_detail")
 
 ]

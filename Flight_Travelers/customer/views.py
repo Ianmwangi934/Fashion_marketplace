@@ -5,8 +5,10 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Airlines,Booking
+from .models import Profile,Airlines,Booking, SupportTicket
 from django.contrib.auth.decorators import login_required
+from .forms import SupportTicketForm
+from .decorators import role_required
 import requests
 class LoginForm(forms.Form):
     username = forms.CharField(label="username", widget=forms.TextInput(attrs={'placeholder': 'Enter your username'}))
@@ -25,6 +27,54 @@ class ProfileForm(forms.Form):
     photo = forms.ImageField(label="photo", required=False)
 
 # Create your views here.
+@role_required(['support_agent','admin'])
+@login_required()
+def support_dashboard(request):
+    profile= Profile.objects.get(user=request.user)
+
+    if profile.role not in ['support_agent', 'admin']:
+        return redirect('airlines')
+    tickets = SupportTicket.objects.all() #Admins can view all the ticktes
+    if profile.role == 'support_agent':
+        tickets = tickets.filter(status="open") #only show unresolved tickets
+    return render(request, "support/dashboard.html",{
+        "tickets":tickets
+    })
+@role_required(['support_agent', 'admin'])
+@login_required()
+def ticket_detail(request, ticket_id):
+    ticket = get_object_or_404(SupportTicket, id=ticket_id)
+
+    if request.method == "POST":
+        response_message = request.POST.get("response")
+        ticket.response = response_message
+        ticket.status = "Resolved"
+        ticket.save()
+        return redirect('support_dashboard')
+    return render(request, 'support/ticket_detail.html',{
+        "ticket":ticket
+    })
+
+@login_required()
+def submit_ticket(request):
+    if request.method == "POST":
+        form = SupportTicketForm(request.POST)
+        if form.is_valid():
+            ticket = form.save(commit=False)
+            ticket.user = request.user #Assigning the logged in user
+            ticket.save()
+            return redirect('ticket_list')
+    else:
+        form = SupportTicketForm()
+    return render(request, 'customer/submit_ticket.html',{
+        "form":form
+    })
+@login_required()
+def ticket_list(request):
+    tickets = SupportTicket.objects.filter(user=request.user)
+    return render(request, "customer/ticket_list.html",{
+        "tickets":tickets
+    })
 def airlines_search_view(request, iata_code):
     #retrieving airline from the data base
     airline = get_object_or_404(Airlines, iata_code=iata_code)
@@ -132,6 +182,7 @@ def flight_data_view(request, iata_code):
     })
 def profile_view(request,username):
     user = get_object_or_404(User,username=username)
+    bookings = Booking.objects.filter(user= request.user)
 
     #create the user profile
     profile, create = Profile.objects.get_or_create(user=user)
@@ -175,7 +226,8 @@ def profile_view(request,username):
                 'photo':profile.photo
             })
             return render(request, "customer/profile.html",{
-                "profile":profile
+                "profile":profile,
+                "bookings":bookings
             })
     
 

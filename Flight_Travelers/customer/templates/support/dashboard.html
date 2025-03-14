@@ -1,0 +1,83 @@
+{% extends "customer/layout.html" %}
+{% block body %}
+<style>
+    body {
+        background-color: #f0f2f5;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .card {
+        border: none;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #007bff;
+    }
+
+    .table th {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+    }
+
+    .table td {
+        text-align: center;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="card">
+        <h2>Support Dashboard</h2>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>User</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.user.username }}</td>
+                    <td>{{ ticket.title }}</td>
+                    <td>{{ ticket.category }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.created_at }}</td>
+                    <td>
+                        <a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-success btn-sm">View</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No tickets found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
