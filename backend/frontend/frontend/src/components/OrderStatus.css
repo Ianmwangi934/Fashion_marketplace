@@ -1,0 +1,59 @@
+/* OrderStatus.css */
+
+.order-confirmation {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .order-confirmation h2 {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 20px;
+  }
+  
+  .order-confirmation p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .order-items-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  .order-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  .order-item-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .order-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 17px;
+  }
+  

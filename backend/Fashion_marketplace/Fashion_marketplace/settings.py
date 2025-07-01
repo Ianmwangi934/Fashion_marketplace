@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+import stripe
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,16 +131,47 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://127.0.0.1:8000",
+    
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ianmurigu4@gmail.com'
+EMAIL_HOST_PASSWORD = 'Mwangi$6cs4lv'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+VONAGE_API_KEY = os.getenv("VONAGE_API_KEY")
+VONAGE_API_SERECT_KEY = os.getenv("VONAGE_API_SERECT_KEY")
+VONAGE_VIRTUAL_NUMBER = os.getenv("VONAGE_VIRTUAL_NUMBER")
 
+stripe.secret_api_key = os.getenv("STRIPE_SECRET_KEY")
+stripe.publick_api_key = os.getenv("STRIPE_PUBLISHABLE_KEY")
+
+PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
+PAYPAL_SECRET = os.getenv("PAYPAL_SECRET")
+PAYPAL_API_BASE = os.getenv("PAYPAL_API_BASE")
+
+MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
+MPESA_CONSUMER_SECRET = os.getenv("MPESA_CONSUMER_SECRET")
+MPESA_PASSKEY= os.getenv("MPESA_PASSKEY")
+MPESA_BASE_URL = os.getenv("MPESA_BASE_URL")
+MPESA_CALLBACK_URL = os.getenv("MPESA_CALLBACK_URL")
+MPESA_SHORTCODE = os.getenv("MPESA_SHORTCODE")
+
+ZOHO_CLIENT_ID = os.getenv("ZOHO_CLIENT_ID")
+ZOHO_CLIENT_SECRET = os.getenv("ZOHO_CLIENT_SECRET")
+ZOHO_REDIRECT_URI= os.getenv("ZOHO_REDIRECT_URI")
+ZOHO_REFRESH_TOKEN = os.getenv("ZOHO_REFRESH_TOKEN")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

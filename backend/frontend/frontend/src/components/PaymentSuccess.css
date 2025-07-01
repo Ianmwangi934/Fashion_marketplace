@@ -1,0 +1,81 @@
+/* This makes styles only apply when body has PaymentSuccess class */
+body.PaymentSuccess .payment-success {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+body.PaymentSuccess .payment-success h2 {
+  color: #28a745;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+body.PaymentSuccess .payment-success h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+body.PaymentSuccess .payment-success p {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+body.PaymentSuccess ul.order-items {
+  list-style: none;
+  padding: 0;
+}
+
+body.PaymentSuccess ul.order-items li {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+body.PaymentSuccess .total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  text-align: right;
+}
+
+body.PaymentSuccess button {
+  margin-top: 25px;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+body.PaymentSuccess button:hover {
+  background-color: #388e3c;
+}
+
+/* Print optimization */
+@media print {
+  body.PaymentSuccess button {
+    display: none;
+  }
+
+  body.PaymentSuccess .payment-success {
+    box-shadow: none;
+    border: none;
+    width: 100%;
+  }
+}

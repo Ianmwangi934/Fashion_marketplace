@@ -1,0 +1,52 @@
+/* Center the form */
+.shipping-form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Heading */
+  .shipping-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Input fields */
+  .shipping-form .form-input {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .shipping-form .form-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Button */
+  .shipping-form .submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .shipping-form .submit-btn:hover {
+    background-color: #e89cae;;
+  }
+  

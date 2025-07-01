@@ -1,13 +1,13 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-body.register-dark {
+body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     font-family: 'Poppins', sans-serif;
 }
-body.register-darks::before {
+body::before {
     content: '';
     position: fixed;
     top: 0;
@@ -20,7 +20,7 @@ body.register-darks::before {
 
 
 
-form {
+form{
     background-color: rgba(255, 248, 245, 0.85);
     padding: 2rem;
     border-radius: 15px;

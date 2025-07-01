@@ -2,14 +2,19 @@ import React, { useContext } from "react";
 import { CartContext } from "../CartContext";
 import { Link } from "react-router-dom";
 import "./CartPage.css";
+import {useNavigate} from "react-router-dom";
 
 const CartPage = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+  const handleProceedToShipping = () =>{
+    navigate("/placeorder")
+  }
 
   return (
     <div className="cart-container">
@@ -34,9 +39,14 @@ const CartPage = () => {
               </button>
             </li>
           ))}
+          < button
+      className="shipping-button"
+      onClick={handleProceedToShipping}
+      >Proceed To Shipping</button>
         </ul>
       )}
       <h3 className="cart-total">Cart Total: ${total.toFixed(2)}</h3>
+      
     </div>
   );
 };

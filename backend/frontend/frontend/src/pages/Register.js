@@ -35,7 +35,7 @@ const Register = () =>{
             localStorage.setItem("refresh_toke", response.data.refresh);
             axios.defaults.headers.common["Authorization"] = `Bearer ${response.data.access}`;
 
-            navigate("") //Redirect the user to homepage
+            navigate("/login") //Redirect the user to homepage
 
         }catch (err){
             setError(err.response?.data?.error || "Registration failed");
@@ -86,7 +86,7 @@ const Register = () =>{
             className="form-input"
             />
 
-            <button type="submit" className="form-button">Register</button>
+            <button type="submit" className="form-button" style={{color: "#e89cae"}}>Register</button>
         </form>
 
         </div>

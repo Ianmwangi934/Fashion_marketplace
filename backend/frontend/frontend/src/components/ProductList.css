@@ -54,4 +54,70 @@
   color: #111;
 }
 
+.store-page {
+  padding: 1rem;
+}
+
+/* StorePage.css */
+.store-hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 2rem;
+  background: #f5f5f5;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-image {
+  width: 30%;              /* slightly narrower */
+  height: 220px;           /* taller than 180px */
+  object-fit: contain;     /* ensures the full image shows without being cropped */
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+.search-overlay {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+.search-bar {
+  padding: 12px 20px;
+  width: 60%;
+  max-width: 450px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8); /* translucent */
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .store-hero {
+    flex-direction: column;
+  }
+
+  .hero-image {
+    width: 90%;
+    height: 180px;
+  }
+
+  .search-bar {
+    width: 80%;
+    font-size: 0.9rem;
+  }
+}
+
+
   

@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* automatically creates consistent spacing between all links */
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  background-color: #f9f9f9;
+  justify-content: flex-start;
+}
+
+.navbar a {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #4f46e5;
+  color: white;
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.navbar a:hover {
+  background-color: #4338ca;
+  transform: scale(1.05);
+}

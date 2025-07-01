@@ -1,0 +1,127 @@
+.payment-options-container {
+  background-image: url('../assets/payment.jpg'); /* or '/payment-bg.jpg' if in public/ */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.payment-options-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.payment-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.payment-card {
+  flex: 1 1 300px;
+  background-color: rgba(255, 255, 255, 0.8); /* translucent white */
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.payment-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #222;
+}
+
+.payment-card p {
+  margin-bottom: 1.5rem;
+  color: red;
+}
+
+.payment-card button {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.payment-card.paypal button {
+  background-color: #fbbf24;
+  color: #111;
+  font-weight: bold;
+}
+
+
+
+
+.payment-card.mpesa button {
+  background-color: #34b233;
+  color: white;
+  font-weight: bold;
+}
+
+.mpesa-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.mpesa-modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.mpesa-modal-content input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.modal-buttons button {
+  margin: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #34b233;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #ccc;
+}
+

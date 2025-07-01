@@ -1,0 +1,11 @@
+.paypal-button {
+    background-color: #ffc439;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
