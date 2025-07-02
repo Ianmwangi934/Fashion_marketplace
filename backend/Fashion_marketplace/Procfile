@@ -1,1 +1,1 @@
-web: gunicorn Fashion_marketplace.wsgi
+web: gunicorn Fashion_marketplace.wsgi:application
