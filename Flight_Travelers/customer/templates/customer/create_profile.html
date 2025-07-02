@@ -1,9 +1,0 @@
-{% extends "customer/layout.html" %}
-{% block body %}
-    <h1>Create your Profile</h1>
-    <form action="{% url 'profile_view' user.username %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Save">
-    </form>
-{% endblock %}
