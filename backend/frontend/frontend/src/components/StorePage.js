@@ -14,7 +14,7 @@ const StorePage = () => {
     // Fetching all products at once
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/store/api/products/',{
+            const response = await axios.get('https://fashion-marketplace-9.onrender.com/store/api/products/',{
                 
                 params: {
                     t: new Date().getTime(),
