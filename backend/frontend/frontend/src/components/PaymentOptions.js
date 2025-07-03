@@ -22,7 +22,7 @@ const PaymentOptions = () =>{
         setLoadig(true);
         try {
             const res = await axios.post(
-                `http://127.0.0.1:8000/store/create-paypal-order/${orderId}/`,
+                `https://fashion-marketplace-9.onrender.com/store/create-paypal-order/${orderId}/`,
                 {},
                 {
                     headers: {
@@ -50,7 +50,7 @@ const PaymentOptions = () =>{
         if (!mpesaPhone || !mpesaAmount) return alert("Enter phone and amount");
 
         try {
-            const res = await axios.post("http://127.0.0.1:8000/store/stk-push/", {
+            const res = await axios.post("https://fashion-marketplace-9.onrender.com/store/stk-push/", {
                 phone: mpesaPhone,
                 amount: mpesaAmount,
             }, {
