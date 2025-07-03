@@ -18,7 +18,7 @@ const OrderStatus = () =>{
         return;
       }
 
-      fetch(`http://127.0.0.1:8000/store/order/${id}/`,{
+      fetch(`https://fashion-marketplace-9.onrender.com/order/${id}/`,{
           method: "GET",
           headers :{
               "Authorization" :`Bearer ${localStorage.getItem("access_token")}`,
@@ -44,7 +44,7 @@ const OrderStatus = () =>{
     const handleUnload = async () =>{
       if (!proceedToCheckout && !id) {
         try {
-          await axios.post("http://127.0.0.1:8000/store/abandoned-order/",{
+          await axios.post("https://fashion-marketplace-9.onrender.com/store/abandoned-order/",{
             order_id:id
           },{
             headers: {
