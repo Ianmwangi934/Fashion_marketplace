@@ -136,7 +136,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://fashion-marketplace-nine.vercel.app/"
+    "https://fashion-marketplace-nine.vercel.app/",
+    "https://fashion-marketplace-vbie.vercel.app/"
     
 ]
 REST_FRAMEWORK = {
