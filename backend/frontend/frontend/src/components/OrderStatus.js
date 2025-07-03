@@ -44,7 +44,7 @@ const OrderStatus = () =>{
     const handleUnload = async () =>{
       if (!proceedToCheckout && !id) {
         try {
-          await axios.post("https://fashion-marketplace-9.onrender.com/store/abandoned-order/",{
+          await axios.post("https://fashion-marketplace-10.onrender.com/store/abandoned-order/",{
             order_id:id
           },{
             headers: {
