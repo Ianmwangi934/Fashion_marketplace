@@ -17,7 +17,7 @@ const ProductDetail = () => {
     const {addToCart} = useContext(CartContext)
 
     useEffect(() =>{
-        fetch(`http://127.0.0.1:8000/store/products/${id}/`)
+        fetch(`https://fashion-marketplace-9.onrender.com/store/products/${id}/`)
         .then(res => res.json())
         .then(data => setProduct(data))
         .catch(error => console.error('Error fetching product:', error));
