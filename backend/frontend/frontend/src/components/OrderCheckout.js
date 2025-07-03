@@ -18,7 +18,7 @@ const OrderCheckout = () =>{
     useEffect(()=>{
         const fetchOrder = async () =>{
             try {
-                const response = await axios.get(`https://fashion-marketplace-9.onrender.com/store/checkout/${orderId}`,{
+                const response = await axios.get(`https://fashion-marketplace-10.onrender.com/store/checkout/${orderId}`,{
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                         "Content-Type": "application/json",
