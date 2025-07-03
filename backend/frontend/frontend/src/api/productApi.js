@@ -13,7 +13,7 @@ const uploadProduct = async (productData) => {
 
     try {
         const response = await axios.post(
-            'http://127.0.0.1:8000/store/api/products/create/',
+            'https://fashion-marketplace-9.onrender.com/store/api/products/create/',
             formData,
             
             {
