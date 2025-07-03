@@ -17,7 +17,7 @@ export const CartProvider = ({children}) =>{
              
 
             try {
-                const response = await axios.get("https://fashion-marketplace-9.onrender.com/store/cart/", {
+                const response = await axios.get("https://fashion-marketplace-10.onrender.com/store/cart/", {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         "Content-Type": "application/json",
