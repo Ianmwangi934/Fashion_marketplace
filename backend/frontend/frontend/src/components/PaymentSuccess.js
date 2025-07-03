@@ -18,14 +18,14 @@ const PaymentSuccess = () =>{
 
     useEffect(() =>{
         // Marking order as shipped
-        axios.post(`https://fashion-marketplace-9.onrender.com/store/order/shipped/${orderId}/`,{},{
+        axios.post(`https://fashion-marketplace-10.onrender.com/store/order/shipped/${orderId}/`,{},{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`
             }
         });
 
         // Fetching updated status
-        axios.get(`https://fashion-marketplace-9.onrender.com/store/order/${orderId}/`,{
+        axios.get(`https://fashion-marketplace-10.onrender.com/store/order/${orderId}/`,{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`
             }
