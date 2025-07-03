@@ -27,7 +27,7 @@ const PlaceORder = () =>{
         setLoading(true);
         try{
             const token = localStorage.getItem("access_token");
-            const response =await axios.post("http://127.0.0.1:8000/store/orders/create/",{shipping_address:shipping,}, {
+            const response =await axios.post("https://fashion-marketplace-9.onrender.com/store/orders/create/",{shipping_address:shipping,}, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
