@@ -28,7 +28,7 @@ const Register = () =>{
         e.preventDefault();
 
         try{
-            const response = await axios.post("http://127.0.0.1:8000/store/register/", form);
+            const response = await axios.post("https://fashion-marketplace-10.onrender.com/store/register/", form);
 
             // Save token and redirect
             localStorage.setItem("access_token", response.data.access);
