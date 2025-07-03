@@ -23,7 +23,7 @@ const CheckoutForm = () =>{
         let clientSecret = "";
         // Only request PaymentIntent when user clicks Pay
         try {
-            const res = await axios.post(`http://127.0.0.1:8000/store/create-payment-intent/${orderId}/`,{},
+            const res = await axios.post(`https://fashion-marketplace-9.onrender.com/store/create-payment-intent/${orderId}/`,{},
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
