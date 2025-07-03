@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://fashion-marketplace-9.onrender.com/store/api/";
+const API_URL = "https://fashion-marketplace-10.onrender.com/store/api/";
 
 
 // Login and store JWT 
