@@ -20,7 +20,7 @@ const ProductForm = ({ refreshProducts }) => {
         const fetchCategories = async () => {
             try {
                 const token = localStorage.getItem("access_token");
-                const res=await fetch('https://fashion-marketplace-11.onrender.com/store/api/categories/',{
+                const res=await fetch('https://fashion-marketplace-12.onrender.com/store/api/categories/',{
                     headers:{
                         "Content-Type":"application/json",
                         "Authorization":`Bearer ${token}`
