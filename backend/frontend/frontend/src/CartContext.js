@@ -54,7 +54,7 @@ export const CartProvider = ({children}) =>{
         }
     
         try {
-            await axios.post('https://fashion-marketplace-11.onrender.com/store/cart/add/', {
+            await axios.post('https://fashion-marketplace-12.onrender.com/store/cart/add/', {
             products_id: product.id,
             quantity: 1,
         }, {
