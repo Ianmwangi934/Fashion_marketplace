@@ -18,7 +18,7 @@ const OrderStatus = () =>{
         return;
       }
 
-      fetch(`https://fashion-marketplace-10.onrender.com/order/${id}/`,{
+      fetch(`https://fashion-marketplace-11.onrender.com/order/${id}/`,{
           method: "GET",
           headers :{
               "Authorization" :`Bearer ${localStorage.getItem("access_token")}`,
@@ -44,7 +44,7 @@ const OrderStatus = () =>{
     const handleUnload = async () =>{
       if (!proceedToCheckout && !id) {
         try {
-          await axios.post("https://fashion-marketplace-10.onrender.com/store/abandoned-order/",{
+          await axios.post("https://fashion-marketplace-11.onrender.com/store/abandoned-order/",{
             order_id:id
           },{
             headers: {
