@@ -7,7 +7,7 @@ const MpesaPay = () =>{
 
     const pay = async () =>{
         try {
-            const res = await axios.post("https://fashion-marketplace-11.onrender.com/store/stk-push/",{
+            const res = await axios.post("https://fashion-marketplace-12.onrender.com/store/stk-push/",{
                 phone,
                 amount
             }, {
