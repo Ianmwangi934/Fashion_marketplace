@@ -31,7 +31,7 @@ function ShippingForm({onContinue}) {
         e.preventDefault();
 
         try {
-            await axios.post("https://fashion-marketplace-9.onrender.com/store/shipping-address/",formData, {
+            await axios.post("https://fashion-marketplace-12.onrender.com/store/shipping-address/",formData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
