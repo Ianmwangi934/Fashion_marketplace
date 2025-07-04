@@ -137,7 +137,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://fashion-marketplace-nine.vercel.app/",
-    "https://fashion-marketplace-t1y3.vercel.app/products"
+    "https://fashion-marketplace-t1y3.vercel.app/products",
+    "https://fashion-marketplace-q8gm.vercel.app"
     
 ]
 REST_FRAMEWORK = {
