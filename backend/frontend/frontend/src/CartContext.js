@@ -27,7 +27,7 @@ export const CartProvider = ({children}) =>{
                     id: item.product.id,
                     name: item.product.name,
                     price: item.product.price,
-                    image: `http://127.0.0.1:8000${item.product.image}`,
+                    image: `https://fashion-marketplace-12.onrender.com${item.product.image}`,
                     quantity: item.quantity
                 }));
 
