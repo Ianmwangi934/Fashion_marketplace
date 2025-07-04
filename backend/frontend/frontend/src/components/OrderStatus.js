@@ -73,7 +73,7 @@ const OrderStatus = () =>{
       {order.items.map((item, index) => {
     const imageUrl = item.product.image?.startsWith("http")
       ? item.product.image
-      : `http://127.0.0.1:8000${item.product.image}`;
+      : `https://fashion-marketplace-12.onrender.com/${item.product.image}`;
 
     return (
       <li key={index} className="order-item">
