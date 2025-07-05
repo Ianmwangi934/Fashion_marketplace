@@ -18,7 +18,7 @@ const OrderStatus = () =>{
         return;
       }
 
-      fetch(`https://fashion-marketplace-12.onrender.com/order/${id}/`,{
+      fetch(`https://fashion-marketplace-12.onrender.com/store/order/${id}/`,{
           method: "GET",
           headers :{
               "Authorization" :`Bearer ${localStorage.getItem("access_token")}`,
