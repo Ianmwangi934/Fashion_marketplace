@@ -71,7 +71,7 @@ const OrderStatus = () =>{
       <p><strong>Items:</strong></p>
       <ul className="order-items-list">
       {order.items.map((item, index) => {
-    const imageUrl = item.product.image?.startsWith("http")
+    const imageUrl = item.product.image?.startsWith("https")
       ? item.product.image
       : `https://fashion-marketplace-12.onrender.com/${item.product.image}`;
 
