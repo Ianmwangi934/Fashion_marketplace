@@ -38,7 +38,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Application definition
 
 INSTALLED_APPS = [
-    
+    'cloudinary',
+    'cloudinary_storage',
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
@@ -181,6 +182,13 @@ ZOHO_CLIENT_ID = os.getenv("ZOHO_CLIENT_ID")
 ZOHO_CLIENT_SECRET = os.getenv("ZOHO_CLIENT_SECRET")
 ZOHO_REDIRECT_URI= os.getenv("ZOHO_REDIRECT_URI")
 ZOHO_REFRESH_TOKEN = os.getenv("ZOHO_REFRESH_TOKEN")
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dlepagcl0',
+    'API_KEY' : 573878397521187,
+    'API_SECRET' : '8SbnUx3cYxQN0h_L2cCpAV-lI34',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
