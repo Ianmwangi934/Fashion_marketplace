@@ -2,9 +2,12 @@ annotated-types==0.7.0
 asgiref==3.8.1
 certifi==2025.6.15
 cffi==1.17.1
+channels==4.2.2
 charset-normalizer==3.4.2
+cloudinary==1.44.1
 cryptography==45.0.4
 Django==5.2.3
+django-cloudinary-storage==0.3.0
 django-cors-headers==4.7.0
 djangorestframework==3.16.0
 djangorestframework_simplejwt==5.5.0
@@ -19,6 +22,7 @@ pydantic_core==2.33.2
 PyJWT==2.9.0
 python-dotenv==1.1.1
 requests==2.32.4
+six==1.17.0
 sqlparse==0.5.3
 stripe==12.2.0
 typing-inspection==0.4.1
