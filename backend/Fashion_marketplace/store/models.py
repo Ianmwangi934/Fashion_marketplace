@@ -34,7 +34,7 @@ class Products(models.Model):
     stock = models.IntegerField()
     size = models.CharField(max_length=20, blank=True, null=True)
     color = models.CharField(max_length=20, blank=True, null=True)
-    image = models.ImageField(default= 'default.jpg', upload_to='product_images/', null=True, blank=True)
+    image = models.ImageField(default= 'https://res.cloudinary.com/dlepagcl0/image/upload/vYYYYMMDD/default.jpg', upload_to='product_images/', null=True, blank=True)
     date_uploaded= models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
