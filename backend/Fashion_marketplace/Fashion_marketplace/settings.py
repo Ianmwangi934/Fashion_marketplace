@@ -188,12 +188,7 @@ CLOUDINARY_STORAGE = {
     'api_secret': '8SbnUx3cYxQN0h_L2cCpAV-lI34',
 }
 
-cloudinary.config( 
-    cloud_name = "dlepagcl0", 
-    api_key = "573878397521187", 
-    api_secret = "8SbnUx3cYxQN0h_L2cCpAV-lI34",
-    secure=True
-)
+
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
