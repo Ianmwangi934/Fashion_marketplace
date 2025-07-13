@@ -187,6 +187,13 @@ CLOUDINARY_STORAGE = {
     'api_key': '573878397521187',
     'api_secret': '8SbnUx3cYxQN0h_L2cCpAV-lI34',
 }
+cloudinary.config( 
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME", "dlepagcl0"), 
+    api_key=os.getenv("CLOUDINARY_API_KEY", "573878397521187"), 
+    api_secret=os.getenv("CLOUDINARY_API_SECRET", "8SbnUx3cYxQN0h_L2cCpAV-lI34"),
+    secure=True
+)
+
 
 
 
