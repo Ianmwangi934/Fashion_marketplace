@@ -16,7 +16,7 @@ function ProductList({ products = [] }) {
                     </div>
                 ))
             ) : (
-                <p>No products available.</p>
+                <p>No products available.Note: Product data may be temporarily unavailable due to Render’s free tier, which puts the backend to sleep after 30 minutes of inactivity. Feel free to sign up and upload a product, or check out the demo video to see the full experience. </p>
             )}
         </div>
     );
