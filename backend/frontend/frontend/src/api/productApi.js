@@ -1,4 +1,3 @@
-// src/api/productApi.js
 import axios from 'axios';
 
 const uploadProduct = async (productData) => {
@@ -12,16 +11,14 @@ const uploadProduct = async (productData) => {
     }
 
     try {
+        const token = localStorage.getItem("access_token");
         const response = await axios.post(
             'https://fashion-marketplace-12.onrender.com/store/api/products/create/',
             formData,
-            
             {
-                method: 'POST',
-                body: formData,
                 headers: {
-                    'Content-Type': 'multipart/form-data',
-
+                    // ⚠️ Let axios set Content-Type properly with boundary
+                    Authorization: `Bearer ${token}`,
                 },
             }
         );
