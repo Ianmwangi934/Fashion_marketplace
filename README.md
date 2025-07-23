@@ -38,7 +38,7 @@ powerful tools for administrators, including product management, real-time order
 
 ---
 
-## 🛠️Tech Stack
+## Tech Stack
 
 ### Frontend:
 - React.js
